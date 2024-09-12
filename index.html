@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Am I - API Practice</title>
+</head>
+<body>
+    <h1 id="activity">See who am I</h1>
+    <h1>Who Am I - API Practice</h1>
+
+
+    <script>
+        function doSomething(){
+            fetch("https://randomuser.me/api/")
+        .then(res => res.json())
+        .then(data => {
+            const user = data.results[0];
+            const name = user.name;
+
+            const userName = `${name.title} ${name.first} ${name.last}`;
+            document.getElementById("activity").innerText = userName;
+        });
+        }
+
+        doSomething();
+
+        setInterval(()=>{
+            doSomething();
+        }, 5000)
+
+
+    </script>
+</body>
+</html>
